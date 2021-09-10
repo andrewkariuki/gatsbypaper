@@ -1,33 +1,40 @@
 import React from "react"
-import Highlight, { defaultProps } from "prism-react-renderer"
-import theme from "prism-react-renderer/themes/vsDark"
+import { createGlobalStyle, ThemeProvider } from "styled-components"
+import { Code, Table } from "./src/components"
+import { MDXProvider } from "@mdx-js/react"
+import { preToCodeBlock } from "mdx-utils"
+import Theme from "./src/themes/Theme"
+import "./language-tabs.css"
 
-export const Code = ({ codeString, hasLineNumbers, language, ...props }) => {
-  return (
-    <Highlight
-      {...defaultProps}
-      code={codeString}
-      language={language}
-      theme={theme}
-    >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <div
-          className="gatsby-highlight"
-          data-prism-renderer="true"
-          data-has-line-numbers={hasLineNumbers}
-          data-language={language}
-        >
-          <pre className={className} style={style}>
-            {tokens.map((line, i) => (
-              <div {...getLineProps({ line, key: i })}>
-                {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            ))}
-          </pre>
-        </div>
-      )}
-    </Highlight>
-  )
+const GlobalStyles = createGlobalStyle`
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
+body,html{
+    font-family: ${props => props.theme.fonts.main};
+    height: 100%;
+    background-color: ${props => props.theme.colors.light1};
+}
+`
+const components = {
+  table: Table,
+  pre: preProps => {
+    const props = preToCodeBlock(preProps)
+    if (props) {
+      return <Code {...props} />
+    }
+    return <pre {...preProps} />
+  },
+  wrapper: ({ children }) => <>{children}</>,
+}
+
+export const wrapRootElement = ({ element }) => (
+  <MDXProvider components={components}>
+    <ThemeProvider theme={Theme}>
+      <GlobalStyles />
+      {element}
+    </ThemeProvider>
+  </MDXProvider>
+)
