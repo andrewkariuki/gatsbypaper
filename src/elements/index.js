@@ -1,3 +1,4 @@
+export * from "./ContentElements"
 export * from "./ContainerElements"
 export * from "./FooterElements"
 export * from "./ImageElements"
