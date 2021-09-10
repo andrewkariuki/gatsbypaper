@@ -14,7 +14,7 @@ export const Nav = () => {
   return (
     <NavWrapper>
       <Link to="/">
-        <img src={data.logo.publicURL} alt="Gatsby Paper Logo" />
+        <img src={data.logo.publicURL} width={50} alt="Gatsby Paper Logo" />
       </Link>
     </NavWrapper>
   )
