@@ -9,15 +9,15 @@ export const PaginationWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  &:nth-child(1) {
-    colors: ${props =>
+  &:nth-child(odd) {
+    color: ${props =>
       props.isFirst ? props.theme.colors.dark3 : props.theme.colors.dark1};
     pointer-events: ${props => (props.isFirst ? "none" : "auto")};
     cursor: ${props => (props.isFirst ? "default" : "pointer")};
   }
 
-  &:nth-child(2) {
-    colors: ${props =>
+  &:nth-child(even) {
+    color: ${props =>
       props.isLast ? props.theme.colors.dark3 : props.theme.colors.dark1};
     pointer-events: ${props => (props.isLast ? "none" : "auto")};
     cursor: ${props => (props.isLast ? "default" : "pointer")};
