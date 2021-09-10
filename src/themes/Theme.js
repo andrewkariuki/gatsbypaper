@@ -12,7 +12,7 @@ export default {
     light1: "hsl(0,0%,97%)",
     light2: "hsl(0,0%,99%)",
   },
-  breakPoints: {
+  breakpoints: {
     mobile: "only screen and (max-width: 50rem)",
     tablet: "only screen and (max-width: 65rem)",
   },
