@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Gatsby Paper`,
-    description: `Sample Gatsby Blog Template`,
+    description: `The Great Gatsby Paper`,
     author: `@andrewkariuki`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    siteUrl: `https://the-great-gatsby-paper.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

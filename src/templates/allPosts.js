@@ -6,6 +6,7 @@ import {
   FeatureImage,
   Content,
   ContentCard,
+  Seo,
 } from "../components"
 import { H1, P } from "../elements"
 
@@ -25,6 +26,7 @@ const allPosts = ({ pageContext, data }) => {
 
   return (
     <Container>
+      <Seo />
       <FeatureImage />
       <Content>
         <H1 textAlign="center" margin="0 0 1rem 0">
